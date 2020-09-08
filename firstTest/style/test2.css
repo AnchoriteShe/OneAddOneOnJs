@@ -1,0 +1,9 @@
+.style1 li{
+    color: orange;
+}
+.style2, .style3 {
+    background: red;
+}
+.style4:hover {
+    background-color: coral;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .clear::before,
+        .clear::after {
+            content: "";
+            display: block;
+            /*将伪元素增加的内容设置成块元素*/
+            clear: both;
+        }
+
+        .box1 {
+            margin-top: 100px;
+            width: 200px;
+            height: 100px;
+            background-color: #f00;
+            float: left;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 100px;
+            background-color: #0f0;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clear">
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </div>
+    <h3>浮动元素下面的元素</h3>
+
+    <p>伪元素：
+
+        在页面上不存在的元素，但是可以通过css来添加上去
+
+        种类：
+
+        :before
+        :after
+        注意：每个元素都有自己的伪元素</p>
+
+    </br>
+    <p>通过伪元素清除浮动的方式，我们不需要增加任何新的标签，只需要在<b>浮动元素父级容器设置上述属性即可</b>，这样网页的任何位置需要清除浮动，只需要给元素添加一个class名，既方便有实用。</p>
+</body>
+
+</html>
