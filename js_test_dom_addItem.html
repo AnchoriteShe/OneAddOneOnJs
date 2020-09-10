@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <h1>内容：</h1>
+    <button>添加文本节点</button>
+    <script>
+        //在h1标签中插入“hello world”
+        var h1 = document.querySelector("h1");
+        var btn = document.querySelector("button");
+
+        btn.onclick = function () {
+            var textNode = document.createTextNode("hello world ");
+            //createTextNode方法可以创建一个文本节点
+            h1.appendChild(textNode);
+            //appendChild方法可以将textNode节点添加到h1标签中。
+        }
+    </script> -->
+
+    <!-- <h1>内容：</h1>
+    <button>添加文本节点</button>
+    <script>
+
+        // 在DOM中还有另一个属性可以更方便地获取和设置文本节点，这个属性是innerHTML,我们写一个简单的例子来测试innerHTML属性
+
+        var h1 = document.querySelector("h1");
+        var btn = document.querySelector("button");
+        btn.onclick = function () {
+            h1.innerHTML += "hello world ";
+            //设置h1的文本节点，innerHTML的内容会完全覆盖原节点的内容
+        }
+    </script> -->
+
+
+    <button>添加节点</button>
+    <ul>
+        <li>香蕉</li>
+        <li>苹果</li>
+        <li>鸭梨</li>
+    </ul>
+
+
+    <!-- <script>
+        // 创建和添加元素节点
+        var btn = document.querySelector("button");
+        var ul = document.querySelector("ul");
+        btn.onclick = function () {
+            var li = document.createElement("li"); //创建一个元素节点，li元素
+            li.innerHTML = "鸭梨";
+            ul.appendChild(li); //在ul元素中添加li元素
+        }
+    </script> -->
+
+    <input type="text" class="num1">
+
+    <script>
+        var btn = document.querySelector("button");
+        var ul = document.querySelector("ul");
+        var text = document.querySelector("input");
+        btn.onclick = function () {
+            var li = document.createElement("li"); //创建一个元素节点，li元素
+            ul.appendChild(li); //在ul元素中添加li元素
+            li.innerHTML = text.value
+        }
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
