@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>button</button>
+
+    <script>
+        // var button = document.querySelector("button")
+        // var t = setInterval(function () {
+        //     console.log("hello world");
+        // }, 3000)
+
+        // button.addEventListener("click", function () {
+        //     clearTimeout(t)
+        // })
+
+        // setTimeout(function () {
+        //     //一秒后执行
+        // }, 1000);
+
+        // setInterval(function () {
+        //     //一秒后执行，并且每隔一秒重复执行
+        // }, 1000)
+
+        // var n = 1;
+        // var t = 0;
+        // function showNumber() {
+        //     console.log(n);
+        //     n++;
+        //     if (n === 10) {
+        //         clearInterval(t)
+        //     }
+        // }
+        // t = setInterval(showNumber, 1000);
+        // showNumber();    //调用函数，可以在页面加载时直接输出1。
+
+
+    </script>
+
+    <p><span class="seconds">5</span>秒后跳转到百度</p>
+
+    <script>
+        var second = document.querySelector(".seconds")
+
+        setInterval(function () {
+            var s = Number(second.innerHTML)
+            s--;
+            second.innerHTML = s;
+            if (s === 0) {
+                location.href = "http://www.baidu.com"
+            }
+        }, 1000)
+
+
+    </script>
+
+</body>
+
+</html>

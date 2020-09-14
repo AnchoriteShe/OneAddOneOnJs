@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+
+    <script>
+        var btn1 = document.querySelector("#btn1");
+        var btn2 = document.querySelector("#btn2");
+
+
+        // onclick中第二次的事件会覆盖第一次的事件
+        btn1.onclick = function () {
+            console.log("我是按钮1");
+        }
+        btn1.onclick = function () {
+            console.log("我是按钮1,第二次绑定");
+        }
+
+        // addEventListener 中的事件按执行的先后顺序都会被执行
+        btn2.addEventListener("click", function () {
+            console.log("我是按钮2");
+        })
+
+        btn2.addEventListener("click", function () {
+            console.log("我是按钮2,第二次绑定");
+        })
+    </script>
+
+
+
+
+    <div class="box1">
+        <div class="box2">
+            <div class="box3">100</div>
+        </div>
+    </div>
+
+
+    <script>
+        var box1 = document.querySelector(".box1");
+        var box2 = document.querySelector(".box2");
+        var box3 = document.querySelector(".box3");
+
+        // 默认情况下，先执行最近的事件，冒泡
+        // box1.addEventListener("click", function () {
+        //     console.log("我是box1")
+        // })
+        // box2.addEventListener("click", function () {
+        //     console.log("我是box2")
+        // })
+        // box3.addEventListener("click", function () {
+        //     console.log("我是box3")
+        // })
+
+        // 设置为true的参数后，与默认相反
+        box1.addEventListener("click", function () {
+            console.log("我是box1")
+        }, true)
+        box2.addEventListener("click", function () {
+            console.log("我是box2")
+        }, true)
+        box3.addEventListener("click", function () {
+            console.log("我是box3")
+        }, true)
+
+    </script>
+
+
+
+</body>
+
+</html>
