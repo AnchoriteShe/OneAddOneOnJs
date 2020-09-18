@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul class="fruits">
+        <li>banana</li>
+        <li>apple</li>
+    </ul>
+
+    <button class="add">add fruit</button>
+    <script src="script/jquery-3.5.1.min.js"></script>
+
+    <script>
+        var addFruits = "fruit"
+        var index = 0
+        $(".add").click(function () {
+            index += 1
+            $(".fruits").append("<li>" + addFruits + (index % 3) + "</li>")
+        })
+
+        // 为什么删除不掉上面button加入的新li
+        // 后添加的元素未能绑定鼠标单击事件，所以当我们点击后添加的元素列表的时候，不能成功删除元素，为了正确的删除元素，我们需要使用事件委托方法delegate
+        $(".fruits li").click(function () {
+            $(this).remove()
+        })
+
+        // delegate方法有三个参数，第一个参数是选择器，找到所有.furits元素下的所有li元素，第二个参数是事件名称，说明我们用事件委托处理click事件，第三个参数是当click事件触发时执行的之间监听函数
+        $(".fruits").delegate("li", "click", function () {
+            $(this).remove();
+        })
+    </script>
+</body>
+
+</html>
