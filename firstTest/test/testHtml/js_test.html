@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <script>
+        // alert("hasai")
+        console.log("123")
+
+        var number = 100;
+        var string = "hello world";
+        var boolean = true  //false;
+        var n = null;
+        var u = undefined;
+        var obj = {};
+
+
+        for (var i = 0; i < 10; i++) {
+            if (i === 6) {
+                break;
+            }
+            console.log(i);
+        }
+
+        function fun(str) {
+            console.log("hello " + str);
+        }
+        fun("world");
+
+
+        var cat = {
+            //定义一个对象cat,它有两个属性，name和age
+            name: "喵喵",
+            age: 2
+        }
+        //有两种方法可以获取到对象的属性值：1、对象名.属性名；2、对象名["属性名"]
+        console.log(cat.name);
+        console.log(cat["name"]);
+
+        // 允许重复定义？
+        var cat = {
+            name: "喵喵",
+            age: 2,
+            sayName: function () {
+                console.log("我是喵喵");
+            }
+        }
+        cat.sayName();
+
+
+        // 在对象的方法中使用this，可以指向这个对象本身
+        var cat = {
+            name: "喵喵",
+            age: 2,
+            sayName: function () {
+                console.log("我是" + this.name)
+            }
+        }
+        cat.sayName();            //输出“我是喵喵”
+        cat.name = "小白";
+        console.log(cat.name);    //输出"小白"
+        cat.sayName();            //输出“我是小白”
+
+
+        var friends = ["小明", "小亮"];
+        friends.push("小红");
+        console.log(friends);   //输出["小明","小亮","小红"];
+
+        // 数组连接成字符串join：通过join方法可以将数组链接成一个字符串
+        var friends = ["小明", "小亮", "小红", "张三", "李四", "王五"];
+        var str1 = friends.join();    //用逗号分隔
+        var str2 = friends.join("");  //没有分隔
+        var str3 = friends.join("+"); //用加号分隔
+        console.log(str1);
+        console.log(str2);
+        console.log(str3);
+
+
+        // confirm也会向用户显示一条消息，但是用户可以通过点击“确定”或“取消”按钮，并返回一个布尔值。
+        var result = confirm("点确定返回true,点取消返回false");
+        console.log(result);   //点击不同按钮，控制台输出结果不同
+
+        // prompt也可以像用户显示一条消息，等待用户输入字符串后，返回这个字符串，如果用户点击取消，则返回null。
+        var result = prompt("请输入你的名字：")
+        console.log(result);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p title="未绑定的title属性">我的title属性没有绑定数据</p>
+        <p v-bind:title="tit">我的title属性绑定了数据</p>
+        <button @click="myEvent">按钮</button>
+        <!-- <img v-bind:src="iimg"> -->
+        <button @click="changeImg">img box</button>
+
+        <ul>
+            <!-- 通过v-for可以实现列表的显示 -->
+            <li v-for="fruit in fruits">{{fruit}}</li>
+        </ul>
+
+        <ul>
+            <li @click="showIndex(index)" v-for="(val, index) in fruits">
+                {{val}}
+                <span v-on:click="del(index)">删除</span>
+            </li>
+        </ul>
+        <button @click="showFruitsLen">showFruitsLen</button>
+
+        <p v-if="seen">现在你看到我了</p>
+
+
+        <!-- 可以通过v-model实现数据的双向绑定，当文本框中的数据发生变化的时候，v-model对应的值会跟着改变 -->
+        <h1>数据绑定：{{message}}</h1>
+        <input type="text" v-model="message">
+        <button @click="showMsg">showMsg</button>
+
+    </div>
+
+    <script src="../../script/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                tit: "绑定的title属性",
+                iimg: "../../img/0103_img0.png",
+                fruits: ["a", "b", "c"],
+                seen: true,
+                message: "123"
+            },
+            methods: {
+                myEvent: function () {
+                    alert("fkfkfk")
+                },
+                changeImg: function () {
+                    this.iimg = "../../img/0103_img1.png"
+                },
+                showIndex: function (index) {
+                    console.log(index);
+                },
+                del: function (index) {
+                    //根据索引值（index）删除这一条内容
+                    this.fruits.splice(index, 1);
+                },
+                showFruitsLen: function () {
+                    alert(this.fruits.length)
+                },
+                showMsg: function () {
+                    alert(this.message)
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

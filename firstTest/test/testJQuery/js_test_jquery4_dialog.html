@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<!-- 居中显示一个提示框，提示框出现时，整个页面变暗，关闭时，页面变会原样 -->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* 设置模态框容器 */
+        .model {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            display: none;
+        }
+
+        /* 设置半透明层 */
+        .model .bg {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        /* 为模态框设置样式和居中显示 */
+        .model .content {
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            background-color: white;
+            border: 2px solid orange;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="show">弹出模态框</button>
+    <div class="model">
+        <div class="bg"></div>
+        <div class="content">
+            <h1>模态框的内容</h1>
+            <button class="hide">关闭模态框</button>
+        </div>
+    </div>
+    <script src="script/jquery-3.5.1.min.js"></script>
+    <script>
+        //点击弹出时，会使模态框容器显示出来，半透明层和模态框
+        //也就随之弹出
+        $(".show").click(function () {
+            $(".model").fadeIn();
+        })
+        //点击关闭时，会使模态框隐藏
+        $(".hide").click(function () {
+            $(".model").fadeOut();
+        })
+    </script>
+</body>
+
+</html>

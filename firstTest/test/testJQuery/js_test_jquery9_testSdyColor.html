@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="a">red</div>
+    <div style="color:blue">blue</div>
+    <div style="color:green">green</div>
+    <div style="color:yellow">yellow</div>
+    <button class="a">color</button>
+    <script src="script/jquery-3.5.1.min.js"></script>
+
+    <script type="text/javascript" src="script/jquery.sdy.color.js"></script>
+    <script>
+        // // 插件编写
+        // ; (function ($) {
+        //     $.fn.extend({
+        //         "color": function (value) {
+        //             if (value == undefined) {
+        //                 return this.css("color");
+        //             } else {
+        //                 return this.css("color", value);
+        //             }
+        //         }
+        //     });
+        // })(jQuery);
+        // 插件应用
+        $(".a").click(function () {
+            // 查看第一个 div 的color 样式值
+            alert($("div").color() + "\n 返回字符串，证明此插件可用。");
+
+            // 把所有的 div 字体颜色设为红色
+            alert($("div").color("red") + "\n 返回object 证明得到的是 jQuery对象")
+        })
+    </script>
+
+</body>
+
+</html>

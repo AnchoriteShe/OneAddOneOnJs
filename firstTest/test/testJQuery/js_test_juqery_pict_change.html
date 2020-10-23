@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .nav li {
+            list-style: none;
+            float: left;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid blue;
+        }
+
+        .active {
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <img src="img/20200902101307.png">
+
+    <script src="./script/jquery-3.5.1.min.js"></script>
+
+    <script>
+        var arr = [
+            "img/1501_open01.png",
+            "img/1502_open02.png",
+            "img/1503_open03.png",
+            "img/1504_open04.png"
+        ]
+
+        $("li").click(function () {
+            var index = $(this).index() % 4
+            var url = arr[index]
+            $("img").attr("src", url)
+            // 使用siblings方法可以获取同级的其他元素
+            // 点击自身显示效果，去除其他同级元素的显示效果
+            $(this).addClass("active").siblings().removeClass("active");
+        })
+    </script>
+</body>
+
+</html>

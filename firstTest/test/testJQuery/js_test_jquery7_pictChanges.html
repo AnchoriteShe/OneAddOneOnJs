@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<!-- 图片轮播器
+* 将多张图片横向排列成一行。
+* 用动画的形式改变图片列表的margin-left值，使其产生动画效果。
+* 设置容器尺寸与一张图片尺寸相同，并且隐藏多于的图片。 -->
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>demo01:案例演示-图片自动轮播</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .box {
+            width: 650px;
+            height: 420px;
+            overflow: hidden;
+        }
+
+        .pic-list {
+            list-style: none;
+            width: 3250px;
+            height: 420px;
+        }
+
+        .pic-list li {
+            float: left;
+        }
+
+        .num-list li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #aaa;
+            list-style: none;
+            cursor: pointer;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .num-list .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="pic-list">
+            <li><img src="img/1306_img1.jpg" alt=""></li>
+            <li><img src="img/1306_img2.jpg" alt=""></li>
+            <li><img src="img/1306_img3.jpg" alt=""></li>
+            <li><img src="img/1306_img4.jpg" alt=""></li>
+            <li><img src="img/1306_img5.jpg" alt=""></li>
+        </ul>
+    </div>
+    <ul class="num-list">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script src="script/jquery-3.5.1.min.js"></script>
+    <script>
+        $(".num-list li").click(function () {
+            var index = $(this).index(); //获取列表索引
+            var marleft = -650 * index;  //计算需要移动的margin-left值
+            console.log(marleft)
+            $(this).addClass("active").siblings().removeClass("active");
+            $(".pic-list").animate({
+                "margin-left": marleft
+            }, 500)
+        })
+    </script>
+</body>
+
+</html>

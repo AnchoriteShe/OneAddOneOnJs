@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        /* 清楚浮动 */
+        .clearFix::after,
+        .clearFix::before {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* 为tab按钮添加样式 */
+        .tab-btn li {
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 30px;
+            border: 1px solid red;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+        }
+
+        /* 激活的按钮样式 */
+        .btn-active {
+            background-color: yellow;
+        }
+
+        /* 最开始的内容都是隐藏的 */
+        .content {
+            display: none;
+            width: 300px;
+            height: 200px;
+            border: 1px solid red;
+            background-color: pink;
+        }
+
+        /* 显示激活的选项卡 */
+        .active {
+            display: block
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div>
+        <ul class="tab-btn clearFix">
+            <li>水果</li>
+            <li>运动</li>
+            <li>书籍</li>
+        </ul>
+    </div>
+
+    <div class="content-box">
+        <div class="content active" id="div1">
+            <h3>水果</h3>
+            <p>香蕉、苹果、鸭梨</p>
+        </div>
+        <div class="content" id="div2">
+            <h3>运动</h3>
+            <p>篮球、足球、羽毛球</p>
+        </div>
+        <div class="content" id="div3">
+            <h3>书籍</h3>
+            <p>JavaScript高级程序设计，JavaScript权威指南，jQuery开发实战</p>
+        </div>
+    </div>
+
+
+    <script src="script/jquery-3.5.1.min.js"></script>
+
+    <script>
+
+        var colors = [
+            "yellow", "blue", "green"
+        ]
+
+        $("li").click(function () {
+            // 点击时，只有该元素对应的点击效果显示，其他效果去除
+            $(this).addClass("btn-active")
+                .siblings()
+                .removeClass("btn-active")
+
+            var index = $(this).index()
+            // console.log(index)
+
+            // 通过index获取对应的div的属性，将对应的div内容显示，其他内容隐藏
+            $(".content-box .content").eq(index).addClass("active")
+                .siblings().removeClass("active");
+
+            // 根据li对对应的内容的颜色做切换
+            document.getElementById("div" + (index + 1)).style.background = colors[index];
+        })
+
+    </script>
+</body>
+
+</html>

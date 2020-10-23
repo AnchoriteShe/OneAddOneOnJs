@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <input v-model="message">
+            <li @click="del(index)" v-for="(msg, index) in messages">{{msg}}</li>
+            </span>
+        </ul>
+        <button @click="insert">insert</button>
+
+        <!-- 在上个例子中，我们通过一个文本框和一个按钮实现了在列表中添加元素的功能
+        但是正常的开发工作中，我们不应该用这种方式提交数据，而是应该用提交表单的方式提交数据
+        我们不在使用按钮click事件来添加元素，而是使用表单的submit事件，其他的代码完全一样
+        在submit后面添加事件修饰符“.prevent”，可以阻止submit事件触发后重新加载页面 -->
+        <!-- 变更的代码如下 -->
+        <form v-on:submit.prevent="insert">
+            <input v-model="message" type="text">
+            <input type="submit" value="添加">
+        </form>
+
+        <!-- 常用的事件修饰符如下所示：
+
+        * .prevent
+        * .stop
+        * .once -->
+
+
+    </div>
+    <script src="../../script/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                message: "123",
+                messages: ["1", "2", "3"]
+            },
+            methods: {
+                showMsg: function () {
+                    alert(this.message)
+                },
+                insert: function () {
+                    this.messages.push(this.message)
+                },
+                del: function (index) {
+                    this.messages.splice(index, 1)
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <label style="display:inline-block;width:50px">name:</label><input v-model="vname"></br>
+        <label style="display:inline-block;width:50px">age:</label><input v-model="vage"></br>
+        <label style="display:inline-block;width:40px">sex:</label>
+        <input v-model="vsex" type="radio" name="sex" label="female" checked="checked" value="female">女
+        <input v-model="vsex" type="radio" name="sex" label="male" value="male">男
+        </br>
+
+        <button @click.stop=submit>submit</button>
+        <ul>
+            <li v-for="(stu, index) in student">{{stu}}<button @click="delstu(index)">删除一个朋友，叮，没了</button></li>
+        </ul>
+    </div>
+
+
+
+    <script src="../../script/vue.js"></script>
+    <script>
+        class Student {
+            constructor(name, age, sex) {
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+            }
+        }
+
+        new Vue({
+            el: "#app",
+            data: {
+                vname: "",
+                vage: "",
+                vsex: "female",
+                student: []
+            },
+            methods: {
+                submit: function () {
+                    this.student.push(new Student(this.vname, this.vage, this.vsex))
+                    // console.log(this.student);
+                },
+                delstu: function (index) {
+                    this.student.splice(index, 1)
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

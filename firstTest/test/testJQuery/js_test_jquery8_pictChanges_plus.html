@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>插件切换图片</title>
+    <style type="text/css">
+        #picBox {
+            position: relative;
+            width: 670px;
+        }
+
+        #picList {
+            list-style: none;
+        }
+
+        #numList {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            z-index: 99;
+        }
+
+        #numList li {
+            list-style: none;
+            float: left;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            background-color: #eee;
+            cursor: pointer;
+            border: 1px solid #666;
+        }
+
+        #numList .active {
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="picBox">
+        <ul id="picList">
+            <li><img src="img/1306_img1.jpg" alt=""></li>
+            <li><img src="img/1306_img2.jpg" alt=""></li>
+            <li><img src="img/1306_img3.jpg" alt=""></li>
+            <li><img src="img/1306_img4.jpg" alt=""></li>
+            <li><img src="img/1306_img5.jpg" alt=""></li>
+        </ul>
+        <ul id="numList">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <input type="button" id="prev" value="上一张">
+    <input type="button" id="next" value="下一张">
+
+    <script type="text/javascript" src="script/jquery-3.5.1.min.js"></script>
+    <!-- 引用cycle插件 -->
+    <script type="text/javascript" src="script/jquery.cycle.all.js"></script>
+    <script>
+
+        $("#picList").cycle({
+            //当图片自动播放时，切换数字列表的背景色
+            before: function () {
+                var index = $(this).index();
+                $("#numList li").eq(index).addClass("active").siblings().removeClass("active");
+            }
+        });
+
+        //点击数字列表，切换到指定的图片
+        $("#numList li").click(function () {
+            var index = $(this).index();
+            //传递索引可以跳转到指定图片，并切换数字列表的背景色
+            $("#picList").cycle(index);
+            $(this).addClass("active").siblings().removeClass("active");
+        })
+
+        //点击切换至上一张图片
+        // 传递prev可以切换至上一张
+        $("#prev").click(function () {
+            $("#picList").cycle("prev");
+        });
+
+        //点击切换至下一张图片
+        //传递next可以切换至下一张
+        $("#next").click(function () {
+            $("#picList").cycle("next");
+        });
+    </script>
+</body>
+
+</html>
